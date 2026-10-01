@@ -82,9 +82,9 @@ for (const c of room.cameras) index.videos[c.videoId] = room.id;
 
 const owner = existing?.owner || submitter;
 const updated = new Date().toISOString();
-const { id, name, audioMode, cameras } = room;
+const { id, name, audioMode, cameras, stage } = room;
 fs.mkdirSync(path.join(ROOT, 'rooms'), { recursive: true });
-fs.writeFileSync(path.join(ROOT, 'rooms', `${id}.json`), JSON.stringify({ id, name, audioMode, cameras, owner, updated }, null, 2) + '\n');
+fs.writeFileSync(path.join(ROOT, 'rooms', `${id}.json`), JSON.stringify({ id, name, audioMode, cameras, stage, owner, updated }, null, 2) + '\n');
 index.rooms[id] = { name, cameras: cameras.length, owner, updated };
 fs.writeFileSync(indexFile, JSON.stringify(index, null, 2) + '\n');
 
